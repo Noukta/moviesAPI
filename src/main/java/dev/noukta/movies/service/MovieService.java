@@ -1,10 +1,15 @@
-package dev.noukta.movies;
+package dev.noukta.movies.service;
 
+import dev.noukta.movies.model.Movie;
+import dev.noukta.movies.repository.MovieRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class MovieService {
@@ -18,5 +23,13 @@ public class MovieService {
                 size
         );
         return movieRepository.findAll(pageable);
+    }
+
+    public Optional<Movie> singleMovie(ObjectId id){
+        return movieRepository.findById(id);
+    }
+
+    public Optional<Movie> getMovieByImdbId(int imdbId) {
+        return movieRepository.findByImdb_ImdbId(imdbId);
     }
 }

@@ -1,4 +1,4 @@
-package dev.noukta.movies;
+package dev.noukta.movies.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
